@@ -1,7 +1,7 @@
 import plotly.express as px
 import pandas as pd
 
-df = pd.read_csv ('https://raw.githubusercontent.com/prarsena/courseware-status-visualization/main/CourseListReal.csv')
+df = pd.read_csv ('https://raw.githubusercontent.com/prarsena/courseware-status-visualization/main/CourseList.csv')
 
 dict_map = {'Beginner': 1, 'Intermediate': 2, 'Advanced': 3}
 numericLevel = df["Level"].map(dict_map)
