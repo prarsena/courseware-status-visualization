@@ -63,7 +63,6 @@ fig.show()
 
 ########### Set up the layout
 app.layout = html.Div(children=[
-    html.H1("Courseware"),
     dcc.Graph(
         id='courses',
         figure=fig
