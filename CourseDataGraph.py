@@ -7,18 +7,6 @@ dict_map = {'Beginner': 1, 'Intermediate': 2, 'Advanced': 3}
 numericLevel = df["Level"].map(dict_map)
 df['NumericLevel'] = numericLevel
 
-# # dict_map_color = {'Move It': '#00D5C7', 
-	# 'WhatsUp Gold': '#50DD50', 
-	# 'Sitefinity': '#653DD3',
-	# 'OpenEdge': '#0051d3',
-	# 'Corticon': '#ffd000',
-	# 'Kemp': '#ffe600'}
-
-#pointColor = df["Product"].map(dict_map_color)
-#df['ColorLevel'] = pointColor
-
-print(df)
-
 fig = px.scatter(df, x="Title", y="Status", title="Courseware", color="Product", symbol="Persona", size="NumericLevel", size_max=40, category_orders={"Status": ["Done", "In Process", "Planned"]}, custom_data=["Level", "Persona", "Product", "Title"])
 
 #fig.add_vrect(x0=-1, x1=4.7, line_width=0, fillcolor="#00D5C7", opacity=0.8)
