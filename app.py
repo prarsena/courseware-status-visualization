@@ -1,5 +1,12 @@
+import dash
+from dash import html
+from dash import dcc
 import plotly.express as px
 import pandas as pd
+
+app = dash.Dash(__name__)
+server = app.server
+
 
 if __name__ == '__main__':
 	df = pd.read_csv ('https://raw.githubusercontent.com/prarsena/courseware-status-visualization/main/CourseList.csv')
@@ -55,3 +62,5 @@ if __name__ == '__main__':
 	fig.update_xaxes(showticklabels=True, tickangle=0)
 
 	fig.show()
+	
+	app.run_server()
