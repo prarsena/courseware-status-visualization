@@ -35,7 +35,7 @@ fig.update_traces(mode="markers", marker=dict(
 	"<b>Status:</b> %{y}",
 	"<b>Persona:</b> %{customdata[1]}",
 	"<b>Level:</b> %{customdata[0]}",
-	"<b>More info:</b> %{customdata[4]}"
+	"<b>Details:</b> %{customdata[4]}"
 ]))
 fig.update_layout(
 	height=600,
