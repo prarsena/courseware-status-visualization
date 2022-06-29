@@ -3,17 +3,22 @@ from dash import html
 from dash import dcc
 import plotly.express as px
 import pandas as pd
+import math 
 
 app = dash.Dash(__name__)
 server = app.server
 
 df = pd.read_csv ('https://raw.githubusercontent.com/prarsena/courseware-status-visualization/main/CourseList.csv')
+#df = pd.read_csv ('D:\Sandbox\Progress\coursedata\python\CourseList.csv')
 
 dict_map = {'Beginner': 1, 'Intermediate': 2, 'Advanced': 3}
 numericLevel = df["Level"].map(dict_map)
 df['NumericLevel'] = numericLevel
 
-fig = px.scatter(df, x="Title", y="Status", title="Courseware", color="Product", symbol="Persona", size="NumericLevel", size_max=40, category_orders={"Status": ["Done", "In Process", "Planned"]}, custom_data=["Level", "Persona", "Product", "Title"])
+#if(math.isnan(df['Details'][0])):
+#	print("not a number")
+
+fig = px.scatter(df, x="Title", y="Status", title="Courseware", color="Product", symbol="Persona", size="NumericLevel", size_max=40, category_orders={"Status": ["Done", "In Process", "Planned"]}, custom_data=["Level", "Persona", "Product", "Title", "Details"])
 
 #fig.add_vrect(x0=-1, x1=4.7, line_width=0, fillcolor="#00D5C7", opacity=0.8)
 #fig.add_vrect(x0=4.8, x1=14.7, line_width=0, fillcolor="#50DD50", opacity=0.8)
@@ -29,7 +34,8 @@ fig.update_traces(mode="markers", marker=dict(
 	"<b>Product:</b> %{customdata[2]}",
 	"<b>Status:</b> %{y}",
 	"<b>Persona:</b> %{customdata[1]}",
-	"<b>Level:</b> %{customdata[0]}"
+	"<b>Level:</b> %{customdata[0]}",
+	"<b>More info:</b> %{customdata[4]}"
 ]))
 fig.update_layout(
 	height=600,
@@ -51,7 +57,7 @@ fig.update_layout(
 	),
 	xaxis_title = "Courses by Product",
 	yaxis_title = "Course Status",
-	showlegend=False,
+	showlegend=True,
 	hoverlabel=dict(
 		bgcolor="white"
 	)
